@@ -1,0 +1,50 @@
+{
+  "name": "CD-40 Showroom",
+  "containerEnv": {
+    "EDITOR": "code --wait"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils": {
+      "configureZshAsDefaultShell": true,
+      "username": "vscode",
+      "userUid": 1000,
+      "userGid": 1000
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/rio/features/k3d:1": {
+      "version": "v5.6.3"
+    },
+    "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {
+      "version": "1.29.4"
+    },
+    "ghcr.io/devcontainers-contrib/features/kubectx-kubens:1": {},
+    "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
+    "./homebrew": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "files.trimTrailingWhitespace": true,
+        "files.trimFinalNewlines": true,
+        "files.insertFinalNewline": true,
+        "workbench.welcomePage.walkthroughs.openOnInstall": false
+      },
+      "extensions": [
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "mutantdino.resourcemonitor",
+        "redhat.vscode-yaml"
+      ]
+    },
+    "codespaces": {
+      "repositories": {
+        "shark/cd40-sdk": {
+          "permissions": "read-all"
+        },
+        "shark/cd40-engine": {
+          "permissions": "read-all"
+        }
+      }
+    }
+  }
+}
