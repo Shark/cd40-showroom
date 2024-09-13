@@ -1,5 +1,6 @@
 {
   "name": "CD-40 Showroom",
+  "image": "debian:bookworm",
   "containerEnv": {
     "EDITOR": "code --wait"
   },
