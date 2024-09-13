@@ -1,0 +1,36 @@
+{
+  "type": "module",
+  "scripts": {
+    "compile": "tsc --build",
+    "clean": "tsc --build --clean",
+    "watch": "tsc --build -w",
+    "build": "node bin/build.js",
+    "bundle": "node bin/bundle.js",
+    "componentize": "npx jco componentize dist/bundle.js --wit node_modules/@shark/cd40-sdk/dist/lib/cd40-stack.wit -o dist/stack.wasm --enable-stdout",
+    "transpile": "npx jco transpile dist/stack.wasm -o dist/stack-js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --globalSetup ./jest.global-setup-e2e.ts",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --globalSetup ./jest.global-setup-e2e.ts",
+    "test:quick": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:quick:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch"
+  },
+  "devDependencies": {
+    "@bytecodealliance/componentize-js": "0.8.3",
+    "@bytecodealliance/jco": "1.1.1",
+    "@types/jest": "^29.5.12",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.23.1",
+    "esbuild-plugin-polyfill-node": "^0.3.0",
+    "jest": "^29.7.0",
+    "quicktype": "^23.0.170",
+    "tasuku": "^2.0.1",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@shark/cd40-sdk": "^1.0.7",
+    "@stdlib/stats-base-dists-lognormal": "^0.2.2",
+    "cdk8s": "^2.68.106",
+    "zod": "^3.23.8"
+  }
+}

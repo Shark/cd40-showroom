@@ -1,0 +1,11 @@
+resources:
+- manifests.yaml
+- git-clone-script.yaml
+
+images:
+- name: controller
+  newName: ghcr.io/shark/cd40-engine
+  newTag: dev
+
+patches:
+- path: deployment-patch.yaml

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: git-clone-script
+  namespace: cd-40-system
+data:
+  git-clone.sh: |
+    #!/bin/sh
+    mkdir -p /workspace/stack-library /workspace/stack-cache
+    apk add --no-cache git
+    git config --global init.defaultBranch main
+    if [ -z "$(ls -A /workspace/manifests)" ]; then
+      git clone http://git-repo-server.git-repo-server.svc.cluster.local:/git/manifests /workspace/manifests
+    else
+      echo "Directory /workspace/manifests is not empty. Skipping git clone."
+    fi
+    cd /workspace/manifests
+    if [ -z "$(git rev-parse HEAD 2>/dev/null)" ]; then
+      echo "No commits found. Creating initial commit."
+      git config user.name "CD-40 Commit Bot"
+      git config user.email "commit-bot@cd-40.io"
+      touch README.md
+      git add README.md
+      git commit -m "Initial commit"
+      echo "Initial commit created."
+    else
+      echo "Repository already has commits."
+    fi
+    git config user.name "CD-40 Commit Bot"
+    git config user.email "commit-bot@cd-40.io"
+    chown -R 65532:65532 /workspace

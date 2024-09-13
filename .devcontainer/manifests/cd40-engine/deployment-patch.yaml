@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cd-40-controller-manager
+  namespace: cd-40-system
+spec:
+  template:
+    spec:
+      securityContext:
+        # init container must run as root
+        runAsNonRoot: false
+      initContainers:
+      - name: git-clone
+        image: alpine:latest
+        command:
+        - /bin/sh
+        - /scripts/git-clone.sh
+        volumeMounts:
+        - name: git-clone-script-volume
+          mountPath: /scripts
+        - name: manifests-volume
+          mountPath: /workspace
+        securityContext:
+          runAsUser: 0
+
+      containers:
+      - name: manager
+        volumeMounts:
+        - name: manifests-volume
+          mountPath: /workspace
+        env:
+        - name: CD40_STACK_LIBRARY_PATH
+          value: /workspace/stack-library
+        - name: CD40_STACK_CACHE_PATH
+          value: /workspace/stack-cache
+        - name: CD40_GITOPS_REPO_PATH
+          value: /workspace/manifests
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 200m
+            memory: 512Mi
+
+      - name: debug
+        image: ubuntu
+        command: ['/bin/bash', '-c', "sleep infinity"]
+        volumeMounts:
+        - name: manifests-volume
+          mountPath: /workspace
+
+      volumes:
+      - name: manifests-volume
+        emptyDir: {}
+      - name: git-clone-script-volume
+        configMap:
+          name: git-clone-script
+          items:
+            - key: git-clone.sh
+              path: git-clone.sh
