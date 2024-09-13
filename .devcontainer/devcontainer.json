@@ -29,6 +29,15 @@
     "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
     "./features/homebrew": {}
   },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/git",
+    "ghcr.io/devcontainers/features/docker-in-docker",
+    "ghcr.io/devcontainers-contrib/features/kubectl-asdf",
+    "ghcr.io/devcontainers-contrib/features/kubectx-kubens",
+    "ghcr.io/devcontainers-contrib/features/argo-cd",
+    "./features/homebrew"
+  ],
   "customizations": {
     "vscode": {
       "settings": {
