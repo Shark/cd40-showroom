@@ -3,6 +3,12 @@
   "containerEnv": {
     "EDITOR": "code --wait"
   },
+  "runArgs": [
+    "--init",
+    "--privileged"
+  ],
+  "overrideCommand": true,
+  "containerUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/common-utils": {
       "configureZshAsDefaultShell": true,
