@@ -19,7 +19,7 @@
     },
     "ghcr.io/devcontainers-contrib/features/kubectx-kubens:1": {},
     "ghcr.io/devcontainers-contrib/features/argo-cd:1": {},
-    "./homebrew": {}
+    "./features/homebrew": {}
   },
   "customizations": {
     "vscode": {
