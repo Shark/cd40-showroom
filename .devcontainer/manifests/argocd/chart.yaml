@@ -1,0 +1,27 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  repo: https://argoproj.github.io/argo-helm
+  chart: argo-cd
+  # https://artifacthub.io/packages/helm/argo/argo-cd
+  version: '7.5.2'
+  valuesContent: |-
+    server:
+      ingress:
+        enabled: true
+        hosts:
+        - argocd.127.0.0.1.nip.io
+    configs:
+      cm:
+        timeout.reconciliation: 5s
+      secret:
+        createSecret: false
+      params:
+        server.insecure: true
+    notifications:
+      enabled: false
+    dex:
+      enabled: false
