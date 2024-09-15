@@ -60,6 +60,9 @@
         },
         "shark/cd40-engine": {
           "permissions": "read-all"
+        },
+        "shark/cd40-client": {
+          "permissions": "read-all"
         }
       }
     }

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+brew install gh k9s kustomize
+
 # Delete k3d cluster if it exists to remove all associated resources
 if k3d cluster list | grep -q k3s-default; then
   echo "deleting existing k3d cluster"
@@ -57,3 +59,13 @@ echo "Argocd repo server is ready"
 asdf plugin add nodejs
 asdf install nodejs 20.13.1
 asdf global nodejs 20.13.1
+
+pushd .
+cd40_engine_version=v0.0.1-develop.2
+docker pull "ghcr.io/shark/cd40-engine:$cd40_engine_version"
+k3d image import "ghcr.io/shark/cd40-engine:$cd40_engine_version"
+cd .devcontainer/manifests/cd40-engine
+gh release download --repo shark/cd40-engine "$cd40_engine_version" --pattern manifests.yaml
+kustomize edit set image "controller=ghcr.io/shark/cd40-engine:$cd40_engine_version"
+popd
+kubectl apply -k .devcontainer/manifests/cd40-engine
