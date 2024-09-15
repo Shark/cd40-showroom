@@ -68,6 +68,6 @@
     }
   },
   "waitFor": "initializeCommand",
-  "onCreateCommand": ".devcontainer/develop/on-create.sh",
-  "updateContentCommand": ".devcontainer/develop/update-content.sh"
+  "onCreateCommand": ".devcontainer/on-create.sh",
+  "updateContentCommand": ".devcontainer/update-content.sh"
 }

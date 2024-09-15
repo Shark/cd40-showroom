@@ -1,0 +1,18 @@
+plugins:
+  cd-40:
+    shortCut: Ctrl-L
+    description: Run Action with CD-40
+    scopes:
+    - apps
+    command: cd40-client
+    background: false
+    args:
+    - run
+    - --group
+    - acmecorp.com
+    - --kind
+    - App
+    - --name
+    - $NAME
+    # - --context
+    # - $CONTEXT

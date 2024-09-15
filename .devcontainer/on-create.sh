@@ -69,3 +69,10 @@ gh release download --repo shark/cd40-engine "$cd40_engine_version" --pattern ma
 kustomize edit set image "controller=ghcr.io/shark/cd40-engine:$cd40_engine_version"
 popd
 kubectl apply -k .devcontainer/manifests/cd40-engine
+
+cd40_client_version=v0.0.1-develop.1
+gh release download --repo shark/cd40-client "$cd40_client_version" --pattern cli-linux-amd64
+chmod +x cli-linux-amd64
+sudo mv cli-linux-amd64 /usr/local/bin/cd40-client
+mkdir -p ~/.config/k9s
+cp .devcontainer/k9s-plugins.yaml ~/.config/k9s/plugins.yaml
