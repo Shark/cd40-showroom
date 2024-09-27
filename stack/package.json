@@ -5,6 +5,7 @@
     "clean": "tsc --build --clean",
     "watch": "tsc --build -w",
     "build": "node bin/build.js",
+    "deploy": "node bin/deploy.js",
     "bundle": "node bin/bundle.js",
     "componentize": "npx jco componentize dist/bundle.js --wit node_modules/@shark/cd40-sdk/dist/lib/cd40-stack.wit -o dist/stack.wasm --enable-stdout",
     "transpile": "npx jco transpile dist/stack.wasm -o dist/stack-js",
