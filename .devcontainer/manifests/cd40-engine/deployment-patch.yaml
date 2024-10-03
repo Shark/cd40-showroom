@@ -51,7 +51,9 @@ spec:
 
       volumes:
       - name: manifests-volume
-        emptyDir: {}
+        hostPath:
+          path: /workspaces/cd40-showroom/data
+          type: DirectoryOrCreate
       - name: git-clone-script-volume
         configMap:
           name: git-clone-script

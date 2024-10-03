@@ -8,7 +8,7 @@ if (!filename) {
   process.exit(1);
 }
 
-const command = `kubectl -n cd-40-system cp dist/stack.wasm $(kubectl get pod -n cd-40-system -l control-plane=controller-manager -o jsonpath="{.items[0].metadata.name}"):/workspace/stack-library/${filename}`;
+const command = `cp dist/stack.wasm /workspaces/cd40-showroom/data/stack-library/${filename}`;
 
 try {
   execSync(command, { stdio: 'inherit' });
