@@ -62,8 +62,6 @@ asdf global nodejs 20.13.1
 
 pushd .
 cd40_engine_version=v0.0.1-develop.2
-docker pull "ghcr.io/shark/cd40-engine:$cd40_engine_version"
-k3d image import "ghcr.io/shark/cd40-engine:$cd40_engine_version"
 cd .devcontainer/manifests/cd40-engine
 gh release download --repo shark/cd40-engine "$cd40_engine_version" --pattern manifests.yaml
 kustomize edit set image "controller=ghcr.io/shark/cd40-engine:$cd40_engine_version"
