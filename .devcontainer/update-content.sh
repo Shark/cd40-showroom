@@ -4,8 +4,8 @@ set -euo pipefail
 # Authenticate with GitHub Packages NPM
 echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" > ~/.npmrc
 
-cd stack
 pushd .
+cd stack
 npm ci
 npm run build
 npm run deploy -- stack.wasm
