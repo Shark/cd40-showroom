@@ -69,6 +69,5 @@
   },
   "waitFor": "initializeCommand",
   "onCreateCommand": ".devcontainer/on-create.sh",
-  "postCreateCommand": ".devcontainer/post-create.sh",
   "updateContentCommand": ".devcontainer/update-content.sh"
 }
