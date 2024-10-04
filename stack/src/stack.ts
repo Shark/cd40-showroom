@@ -1,10 +1,18 @@
 import { useStack, CDK8sStack, RenderResult, Request, IncomingMessage, SendResult, Update } from "@shark/cd40-sdk"
-import { quantile } from "@stdlib/stats-base-dists-lognormal"
+import lognormal from "@stdlib/stats-base-dists-lognormal"
 import { Resources } from "./deployment"
 import { StackProps } from "./props"
 import { handleSend } from "./messages"
 
-class ACMEStack extends CDK8sStack {
+type RandomGen = (p: number, mu: number, sigma: number) => number
+export class ACMEStack extends CDK8sStack {
+  private random: RandomGen
+
+  constructor(random?: RandomGen) {
+    super()
+    this.random = random ?? lognormal.quantile
+  }
+
   render(req: Request): RenderResult {
     const { success, data, error } = StackProps.safeParse(JSON.parse(req.this.spec))
     if(!success) {
@@ -18,8 +26,8 @@ class ACMEStack extends CDK8sStack {
     return {
       replace: JSON.stringify({
         health: 'healthy',
-        webRPM: Math.round(quantile(Math.random(), 2.5526, 0.5)),
-        workerTPM: Math.round(quantile(Math.random(), 0.3, 4)),
+        webRPM: Math.round(this.random(Math.random(), 2.5526, 0.5)),
+        workerTPM: Math.round(this.random(Math.random(), 0.3, 4)),
       })
     }
   }

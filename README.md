@@ -2,7 +2,7 @@
 
 The [CD-40](https://docs.cd-40.io) Showroom is a full-featured demo environment for CD-40.
 
-> CD-40 is a platform UX toolkit crafted to provide a next-level developer experience for applications on Kubernetes. It streamlines application delivery and introduces pioneering custom action workflows. [[Docs]](https://docs.cd-40.io)
+> CD-40 is a platform UX toolkit for providing a next-level K8s developer experience. It streamlines application delivery and introduces pioneering custom action workflows. [[Docs]](https://docs.cd-40.io)
 
 We're glad that you're trying CD-40!
 

@@ -26,9 +26,9 @@
     "stripInternal": true,
     "target": "ES2022",
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
+  "include": ["src/**/*.ts", "src/**/*.js", "tests/**/*.ts", "tests/**/*.js"],
   "exclude": [
     "node_modules",
     "dist",

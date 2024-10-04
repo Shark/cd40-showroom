@@ -18,6 +18,9 @@ class Workload extends Construct {
     }).with({
       selector: {
         'app.kubernetes.io/component': component,
+      },
+      extra: {
+        owner: 'team-yellow',
       }
     })
     this.replicas = service?.replicas ?? 1
@@ -27,6 +30,7 @@ class Workload extends Construct {
       metadata: {
         name: `${prefix}${component}`,
         namespace: metadata.namespace,
+        labels: labels.default(),
       },
       spec: {
         selector: {
@@ -35,7 +39,7 @@ class Workload extends Construct {
         replicas: this.replicas,
         template: {
           metadata: {
-            labels: labels.selector,
+            labels: labels.workloadLabels(),
           },
           spec: {
             containers: [
