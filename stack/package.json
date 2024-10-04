@@ -9,8 +9,8 @@
     "bundle": "node bin/bundle.js",
     "componentize": "npx jco componentize dist/bundle.js --wit node_modules/@shark/cd40-sdk/dist/lib/cd40-stack.wit -o dist/stack.wasm --enable-stdout",
     "transpile": "npx jco transpile dist/stack.wasm -o dist/stack-js",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --testPathIgnorePatterns=/tests/e2e/",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --testPathIgnorePatterns=/tests/e2e/",
     "test:e2e": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --globalSetup ./jest.global-setup-e2e.ts",
     "test:e2e:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --globalSetup ./jest.global-setup-e2e.ts"
   },
