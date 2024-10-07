@@ -11,3 +11,5 @@ You find our [👉 proposed workflow](https://docs.cd-40.io/docs/getting-started
 **Note:** This repository is intended to be used from within a GitHub Codespace. [Create a Codespace now! 🚀](https://codespaces.new/shark/cd40-showroom)
 
 We hope you'll like what you see here. In order to find out how to use CD-40 for your team, sign up for our a [Proof of Value (PoV)](https://docs.cd-40.io/proof-of-value/new).
+
+After you've finished experimenting, we appreciate you taking some time to [compile your feedback! 🙏](https://forms.gle/46sF5PtfasiHzh1C7).
