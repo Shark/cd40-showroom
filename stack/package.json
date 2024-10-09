@@ -29,7 +29,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@shark/cd40-sdk": "^1.0.7",
+    "@shark/cd40-sdk": "^1.1.0",
     "@stdlib/stats-base-dists-lognormal": "^0.2.2",
     "cdk8s": "^2.68.106",
     "zod": "^3.23.8"
