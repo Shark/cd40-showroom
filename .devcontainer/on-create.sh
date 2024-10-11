@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+echo 'alias k=kubectl' >>~/.zshrc
+
 brew install gh k9s kustomize
 
 # Delete k3d cluster if it exists to remove all associated resources
