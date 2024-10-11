@@ -63,7 +63,7 @@ asdf install nodejs 20.13.1
 asdf global nodejs 20.13.1
 
 pushd .
-cd40_engine_version=v0.0.1-develop.2
+cd40_engine_version=v0.0.1-develop.3
 docker pull "ghcr.io/shark/cd40-engine:$cd40_engine_version"
 k3d image import "ghcr.io/shark/cd40-engine:$cd40_engine_version"
 cd .devcontainer/manifests/cd40-engine
